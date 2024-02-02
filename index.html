@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="manifes" href="manifest.json"
+    
+  </head>  
+<body>
+     
+<audio id = "stream" >
+
+</audio> 
+ 
+<script>
+
+function getLocalStream() {
+    
+    navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
+		var stream = document.getElementById('stream');
+		//var stream = document.querySelector('audio');
+        stream.srcObject = mediaStream;
+        stream.play();
+    }).catch( err => {
+        console.log("u got an error:" + err)
+    });
+}
+
+getLocalStream();
+	
+</script>	
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/serviceWorker.js');
+    }
+  </script>
+  
+		
+</body>
+
+</html>
