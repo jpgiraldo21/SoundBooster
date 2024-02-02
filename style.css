@@ -74,10 +74,13 @@ a code {
 }
 
 code {
-	background-color: rgb(61, 26, 220);
+	background-color: aquamarine;
 	color: black;
 	font-family: monospace;
 	padding: 1px;
 	user-select: all;
 }
 
+code.image {
+	background-color: lightyellow;
+}
