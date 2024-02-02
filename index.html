@@ -1,45 +1,102 @@
+ <!DOCTYPE html>
+ <html lang="en">
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-
-    <link rel="manifest" href="manifest.json">
-    
-  </head>  
-<body>
-<!--      
-<audio id = "stream" >
-
-</audio> 
- 
-<script>
-
-function getLocalStream() {
-    
-    navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
-		var stream = document.getElementById('stream');
-		//var stream = document.querySelector('audio');
-        stream.srcObject = mediaStream;
-        stream.play();
-    }).catch( err => {
-        console.log("u got an error:" + err)
-    });
-}
-
-getLocalStream();
+ <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>SoundBooster</title>
+	<link rel="canonical" href="https://jpgiraldo21.github.io/SoundBooster/" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-</script>	
--->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/serviceWorker.js');
-    }
-  </script>
-  
-		
-</body>
+	<!-- Icons and Colors -->
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./manifest.json">
+	<link rel="shortcut icon" href="./favicon.ico">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="msapplication-TileImage" content="./mstile-144x144.png">
+	<meta name="msapplication-config" content="./browserconfig.xml">
+	<meta name="theme-color" content="#000000">
+	
+	<!-- SEO and Social Sharing and SEO -->
+	<meta name="description" content="Simple Progressive Web App (PWA) template" />
+	<meta name="robots" content="noodp" />
+	<meta name="author" content="jpgiraldo">
+	<meta name="keywords" content="progressive web app, progressive web application, pwa, pwa progressive web app, pwa progressive web application, progressive app, basic progressive web app, basic progressive web application, basic pwa, example progressive web app, example progressive web application, example pwa, progressive web app basic, progressive web app builder, progressive web app example, progressive web app sample, progressive web app template, sample progressive web app, sample progressive web application, sample pwa, free progressive web application template, progressive web application template, progressive web app template free, progressive web app template free download, progressive web app html template, progressive web app template github" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Sound Booster" />
+	<meta property="og:description" content="Ambient Sound Booster" />
+	<meta property="og:url" content="https://jpgiraldo21.github.io/SoundBooster/" />
+	<meta property="og:site_name" content="Sound Booster" />
+	<meta property="section:publisher" content="https://www.facebook.com/simplepwa/" />
+	<meta property="og:image" content="https://simplepwa.com/share.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Sound Booster" />
+	<meta name="twitter:description" content="Ambient Sound Booster" />
+	<meta name="twitter:site" content="@simplepwa" />
+	<meta name="twitter:image" content="https://simplepwa.com/share.jpg" />
 
-</html>
+	<!-- Styles -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Javscript -->
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+			});
+		}
+	</script>
+	
+ </head>
+
+ <body>
+
+	<header>
+		<div class="container">
+			<a href="./" class="logo" aria-label="Logo">
+				<img src="logo.png" alt="Logo">
+			</a>
+			<h1>Simple Progressive Web App (PWA) template</h1>
+		</div>
+	</header>
+
+	<section>
+		<div class="container">
+			<h2 id="what">What is this?</h2>
+			<p><a href="https://github.com/nikkifurls/simple-pwa" target="_blank" rel="noopener">Simple PWA</a> is a Progressive Web App template that provides the minimum file structure needed to create a PWA&#x2014;a <a href="https://web.dev/what-are-pwas/#reliable" target="_blank" rel="noopener">reliable</a> and <a href="https://web.dev/what-are-pwas/#installable" target="_blank" rel="noopener">installable</a> web application. It's up to you to build upon it, to make it <a href="https://web.dev/what-are-pwas/#capable" target="_blank" rel="noopener">capable</a>.
+			<p>Simple PWA is "offline-first", using a <a href="https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker#cache_then_network" target="_blank" rel="noopener">"cache first"</a> caching strategy, which means on load, two asynchronous requests are kicked off&#x2014;one to the cache, and one to the network. If there's a cached version available, it is used, but the updated version is fetched and stored for the next load. To force the cache to update from the network, change the value of <a href="https://github.com/nikkifurls/simple-pwa/blob/master/sw.js#L1" target="_blank" rel="nofollow noopener"><code>cacheName</code></a> in <a href="https://github.com/nikkifurls/simple-pwa/blob/master/sw.js" target="_blank" rel="nofollow noopener"><code>sw.js</code></a>.</p>
+			
+			<h2 class="how">How do I use it?</h2>
+			<ol>
+				<li>Clone the repository from <a href="https://github.com/nikkifurls/simple-pwa" target="_blank" rel="noopener">GitHub</a>.</li>
+				<li>Create all favicon images using <a href="https://realfavicongenerator.net" target="_blank" rel="noopener">RealFaviconGenerator</a> and replace existing images with generated images.
+					<p>If you're able to install the CLI version of <strong>RealFaviconGenerator</strong>, <a href="https://github.com/nikkifurls/simple-pwa/blob/master/favicon_config.json" target="_blank" rel="nofollow noopener"><code>favicon_config.json</code></a> contains all settings to generate these images using the following command from the project's root directory. The <code>real-favicon</code> tool generates images from <a href="https://github.com/nikkifurls/simple-pwa/blob/master/favicon.png" target="_blank" rel="nofollow noopener"><code>favicon.png</code></a>, so replace <a href="https://github.com/nikkifurls/simple-pwa/blob/master/favicon.png" target="_blank" rel="nofollow noopener"><code>favicon.png</code></a> prior to running this command. The resulting <code>favicon_data.json</code> and <code>site.webmanifest</code> can be discarded.</p>
+					<p><code>real-favicon generate favicon_config.json favicon_data.json .</code></p>
+				</li>
+				
+			</ol>
+			<h2 class="more">Where can I find other PWAs?</h2>
+			<p>Looking for inspiration? Check out these PWA directories:</p>
+			<ul>
+				<li><a href="https://pwainside.com/" target="_blank" rel="noopener nofollow">PWA Inside</a></li>
+				<li><a href="https://appsco.pe/" target="_blank" rel="noopener nofollow">Appscope</a></li>
+				<li><a href="https://progressiveapp.store/" target="_blank" rel="noopener nofollow">Progressive App Store</a></li>
+				<li><a href="https://pwa-directory.appspot.com/" target="_blank" rel="noopener nofollow">PWA Directory</a></li>
+			</ul>
+			<h2 class="help">Can I contribute?</h2>
+			<p>Want to help improve this? Contributions are welcome! <span class="icon arrow" role="img" aria-label="Arrow">&#x27A1;&#xFE0F;</span>&nbsp;<a href="https://github.com/nikkifurls/simple-pwa" target="_blank" rel="nofollow noopener">GitHub</a></p>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<p>If you find this useful, please share it, and if you can, support me directly on <a href="https://patreon.com/nicolefurlan" target="_blank" rel="noopener nofollow">Patreon</a> or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FACW2AMWGLZ6S&source=url" target="_blank" rel="noopener nofollow">Paypal</a>. Your support is greatly appreciated!&nbsp;<span class="icon heart" role="img" aria-label="Heart">&#x2764;</span></p>
+		</div>
+	</footer>
+
+ </body>
+
+ </html>
