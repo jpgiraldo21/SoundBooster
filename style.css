@@ -1,5 +1,5 @@
 html, body {
-	background-color: black;
+	background-color: rgb(21, 86, 64);
 	color: white;
 	font-family: helvetica, arial, sans-serif;
 	font-size: 14px;
@@ -20,7 +20,7 @@ section {
 
 h1, h2 {
 	line-height: 1;
-	text-transform: uppercase;
+	/* text-transform: uppercase;*/
 }
 
 h2 {
@@ -33,6 +33,9 @@ h2:first-of-type {
 
 .logo {
 	display: block;
+	margin-left: auto;
+    margin-right: auto;
+	width:50%;
 }
 
 img {
