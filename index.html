@@ -66,6 +66,29 @@
 	</header>
 
 	<section>
+		
+		<audio id = "stream" >
+
+		</audio> 
+		 
+		<script>
+		
+		function getLocalStream() {
+			
+			navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
+				var stream = document.getElementById('stream');
+				//var stream = document.querySelector('audio');
+				stream.srcObject = mediaStream;
+				stream.play();
+			}).catch( err => {
+				console.log("u got an error:" + err)
+			});
+		}
+		
+		getLocalStream();
+			
+		</script>	
+
 		<div class="container">
 			<h2 id="what">What is this?</h2>
 			<p><a href="https://github.com/nikkifurls/simple-pwa" target="_blank" rel="noopener">Simple PWA</a> is a Progressive Web App template that provides the minimum file structure needed to create a PWA&#x2014;a <a href="https://web.dev/what-are-pwas/#reliable" target="_blank" rel="noopener">reliable</a> and <a href="https://web.dev/what-are-pwas/#installable" target="_blank" rel="noopener">installable</a> web application. It's up to you to build upon it, to make it <a href="https://web.dev/what-are-pwas/#capable" target="_blank" rel="noopener">capable</a>.
