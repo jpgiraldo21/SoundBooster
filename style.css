@@ -9,6 +9,15 @@ html, body {
 	
 }
 
+.button {
+	margin-top: 20px;
+	position: absolute;
+    left: 50%;
+	-ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+	
+}
+
 .container {
 	margin: 0 auto;
 	max-width: 768px;
@@ -29,7 +38,7 @@ h2 {
 }
 
 h2:first-of-type {
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 .logo {
