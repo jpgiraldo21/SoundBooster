@@ -10,7 +10,8 @@ html, body {
 }
 
 .button {
-	margin-top: 20px;
+	padding-top: 10px;
+	margin-top: 0px;
 	position: absolute;
     left: 50%;
 	-ms-transform: translateX(-50%);
@@ -21,7 +22,7 @@ html, body {
 .container {
 	margin: 0 auto;
 	max-width: 768px;
-	padding: 20px 5%;
+	padding: 45px 5%;
 }
 
 section {
@@ -57,7 +58,7 @@ img {
 	width: 500px;
 }
 
-@media all and (max-width: 768px) {
+/*@media all and (max-width: 768px) {
 	.logo img {
 		width: 450px;
 	}
@@ -67,7 +68,7 @@ img {
 	.logo img {
 		width: 350px;
 	}
-}
+}*/
 
 .icon.heart {
 	color: lightcoral;
