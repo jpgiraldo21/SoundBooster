@@ -102,8 +102,8 @@
 				<img src="logo.png" alt="Logo">
 			</a>
 						
-			<!--<audio id = "stream">
-            </audio>-->
+			<audio id = "stream1">
+            </audio>
 
 			<div class="button">
 				<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
@@ -117,7 +117,7 @@
 				<label for="videoSource">Video source: </label><select id="videoSource"></select>
 			</div>
 		
-			<video id="video" style="display: none" playsinline autoplay></video>
+			<!--<video id="video" style="display: none" playsinline autoplay></video>-->
 
 			<div class="button">
 			<button onclick="getLocalStream()" type="button">&#9654; Play Audio</button>
@@ -126,43 +126,222 @@
 
             <script>
 			function getLocalStream() {
-				/*navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
-		         var stream = document.getElementById('stream');
-		         //var stream = document.querySelector('audio');
-                 stream.srcObject = mediaStream;
-                 stream.play();
-                 }).catch( err => {
-                 console.log("u got an error:" + err)
-                 });*/
-				 let script = document.createElement('script');
-                 script.src = "main.js";
-                 document.head.appendChild(script)
-			}
-			function pauseAudio() { 
-		//		function start() {
+				 //let script = document.createElement('script');
+                 //script.src = "main.js";
+                 //document.head.appendChild(script)
+				 //------------------------------------------
+				 'use strict';
+
+var videoElement = document.querySelector('audio');
+var audioInputSelect = document.querySelector('select#audioSource');
+var audioOutputSelect = document.querySelector('select#audioOutput');
+var videoSelect = document.querySelector('select#videoSource');
+var selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+
+//audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
+function gotDevices(deviceInfos) {
+  // Handles being called several times to update labels. Preserve values.
+  const values = selectors.map(select => select.value);
+  selectors.forEach(select => {
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
+  });
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    const deviceInfo = deviceInfos[i];
+    const option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label || `microphone ${audioInputSelect.length + 1}`;
+      audioInputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'audiooutput') {
+      option.text = deviceInfo.label || `speaker ${audioOutputSelect.length + 1}`;
+      audioOutputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source/device: ', deviceInfo);
+    }
+  }
+  selectors.forEach((select, selectorIndex) => {
+    if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+      select.value = values[selectorIndex];
+    }
+  });
+}
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
+// Attach audio output device to video element using device/sink ID.
+function attachSinkId(element, sinkId) {
+  if (typeof element.sinkId !== 'undefined') {
+    element.setSinkId(sinkId)
+        .then(() => {
+          console.log(`Success, audio output device attached: ${sinkId}`);
+        })
+        .catch(error => {
+          let errorMessage = error;
+          if (error.name === 'SecurityError') {
+            errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+          }
+          console.error(errorMessage);
+          // Jump back to first output device in the list as it's the default.
+          audioOutputSelect.selectedIndex = 0;
+        });
+  } else {
+    console.warn('Browser does not support output device selection.');
+  }
+}
+
+function changeAudioDestination() {
+  const audioDestination = audioOutputSelect.value;
+  attachSinkId(videoElement, audioDestination);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+  videoElement.play();
+  // Refresh button list in case labels have become available
+  return navigator.mediaDevices.enumerateDevices();
+}
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function start() {
   if (window.stream) {
     window.stream.getTracks().forEach(track => {
       track.stop();
     });
   }
-  //const audioSource = audioInputSelect.value;
-  //const videoSource = videoSelect.value;
+  const audioSource = audioInputSelect.value;
+  const videoSource = videoSelect.value;
   const constraints = {
-    audio: false,//{deviceId: audioSource ? {exact: audioSource} : undefined},
+    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
     video: false //{deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  navigator.mediaDevices.getUserMedia(constraints);
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 }
 
-//audioInputSelect.onchange = start;
-//audioOutputSelect.onchange = changeAudioDestination;
+audioInputSelect.onchange = start;
+audioOutputSelect.onchange = changeAudioDestination;
 
-//videoSelect.onchange = start;
+videoSelect.onchange = start;
 
-//start();
-			//} 
-			//getLocalStream();
-				
+start();
+				 //------------------------------------------
+			}
+			function pauseAudio() { 
+				//---------------------------------------
+				'use strict';
+
+var videoElement = document.querySelector('audio');
+var audioInputSelect = document.querySelector('select#audioSource');
+var audioOutputSelect = document.querySelector('select#audioOutput');
+var videoSelect = document.querySelector('select#videoSource');
+var selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+
+//audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
+function gotDevices(deviceInfos) {
+  // Handles being called several times to update labels. Preserve values.
+  const values = selectors.map(select => select.value);
+  selectors.forEach(select => {
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
+  });
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    const deviceInfo = deviceInfos[i];
+    const option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label || `microphone ${audioInputSelect.length + 1}`;
+      audioInputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'audiooutput') {
+      option.text = deviceInfo.label || `speaker ${audioOutputSelect.length + 1}`;
+      audioOutputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source/device: ', deviceInfo);
+    }
+  }
+  selectors.forEach((select, selectorIndex) => {
+    if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+      select.value = values[selectorIndex];
+    }
+  });
+}
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
+// Attach audio output device to video element using device/sink ID.
+function attachSinkId(element, sinkId) {
+  if (typeof element.sinkId !== 'undefined') {
+    element.setSinkId(sinkId)
+        .then(() => {
+          console.log(`Success, audio output device attached: ${sinkId}`);
+        })
+        .catch(error => {
+          let errorMessage = error;
+          if (error.name === 'SecurityError') {
+            errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+          }
+          console.error(errorMessage);
+          // Jump back to first output device in the list as it's the default.
+          audioOutputSelect.selectedIndex = 0;
+        });
+  } else {
+    console.warn('Browser does not support output device selection.');
+  }
+}
+
+function changeAudioDestination() {
+  const audioDestination = audioOutputSelect.value;
+  attachSinkId(videoElement, audioDestination);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+  videoElement.pause();
+  // Refresh button list in case labels have become available
+  return navigator.mediaDevices.enumerateDevices();
+}
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function start() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const audioSource = audioInputSelect.value;
+  const videoSource = videoSelect.value;
+  const constraints = {
+    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+    video: false //{deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+}
+
+audioInputSelect.onchange = start;
+audioOutputSelect.onchange = changeAudioDestination;
+
+videoSelect.onchange = start;
+
+start();
+				//---------------------------------------
+			}	 	
 			</script>
             
 		</div>
