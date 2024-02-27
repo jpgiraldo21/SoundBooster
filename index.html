@@ -38,7 +38,7 @@
 	<meta name="twitter:description" content="Amplificador de Sonido Ambiente Sound Booster" />
 	<meta name="twitter:site" content="@simplepwa" />
 	<meta name="twitter:image" content="https://jpgiraldo21.github.io/SoundBooster/share.jpg" />
-	<meta name="twitter:creator" content="@JPGiraldo" />-->
+	<meta name="twitter:creator" content="@nicolemfurlan" />-->
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="style.css">
@@ -47,11 +47,11 @@
 	<script>
 		if ("serviceWorker" in navigator) {
 			window.addEventListener("load", () => {
-				navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+				navigator.serviceWorker && navigator.serviceWorker.register("sw.js");
 			});
 		}
 	</script>
-	<script defer src="./main.js"></script>
+	
 	<script>
 		if ('serviceWorker' in navigator && 'PushManager' in window) {
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -102,34 +102,54 @@
 				<img src="logo.png" alt="Logo">
 			</a>
 						
-			<audio id = "stream">
+			<!--<audio id = "stream">
+            </audio>-->
 
-			</audio>
+			<div class="button">
+				<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+			</div>
+		
+			<div class="button">
+				<label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+			</div>
+		
+			<div class="button" style="display: none">
+				<label for="videoSource">Video source: </label><select id="videoSource"></select>
+			</div>
+		
+			<video id="video" style="display: none" playsinline autoplay></video>
+
 			<div class="button">
 			<button onclick="getLocalStream()" type="button">&#9654; Play Audio</button>
 			<button onclick="pauseAudio()" type="button">&#10074;&#10074; Pause Audio</button> 
 			</div> 
-			<script>
-			
+
+            <script>
 			function getLocalStream() {
-				
-				navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
-					var stream = document.getElementById('stream');
-					//var stream = document.querySelector('audio');
-					stream.srcObject = mediaStream;
-					stream.play();
-				}).catch( err => {
-					console.log("u got an error:" + err)
-				});
+				/*navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( function(mediaStream) {
+		         var stream = document.getElementById('stream');
+		         //var stream = document.querySelector('audio');
+                 stream.srcObject = mediaStream;
+                 stream.play();
+                 }).catch( err => {
+                 console.log("u got an error:" + err)
+                 });*/
+				 let script = document.createElement('script');
+                 script.src = "main.js";
+                 document.head.appendChild(script)
 			}
 			function pauseAudio() { 
-			  stream.pause(); 
+			  //stream.pause();
+			  let script = document.createElement('script');
+              script.src = "pause.js";
+              document.head.appendChild(script) 
 			} 
 			//getLocalStream();
 				
 			</script>
             
 		</div>
+		<!--<script src="main.js" async></script>-->
 	</header>
 
 	<section>
@@ -144,9 +164,9 @@
 			<h2 class="help">Cómo funciona Sound Booster?</h2>
 			
 		    <ol>
-				<li>Solo instale la aplicación en su celular.</li>
-				<li>Conecte los audífonos a su celular, en lo posible sin micrófono.</li>
-				<li>Pulse el botón "Play Audio" y regule el volumen.</li>
+				<li>Solo instale la aplicación en su celular</li>
+				<li>Conecte los audífonos a su celular, en lo posible sin micrófono</li>
+				<li>Pulse el botón "Play Audio" y regule el volumen</li>
 			</ol>
 		</div>
 	</section>
@@ -156,7 +176,6 @@
 			<p><span class="icon heart" role="img" aria-label="Heart" style="font-size:36px;">&#11123;</span></p>
 		</div>-->
 	</footer>
-
- </body>
+</body>
 
  </html>
