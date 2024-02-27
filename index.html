@@ -139,11 +139,28 @@
                  document.head.appendChild(script)
 			}
 			function pauseAudio() { 
-			  //stream.pause();
-			  let script = document.createElement('script');
-              script.src = "pause.js";
-              document.head.appendChild(script) 
-			} 
+		//		function start() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  //const audioSource = audioInputSelect.value;
+  //const videoSource = videoSelect.value;
+  const constraints = {
+    audio: false,//{deviceId: audioSource ? {exact: audioSource} : undefined},
+    video: false //{deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints);
+}
+
+//audioInputSelect.onchange = start;
+//audioOutputSelect.onchange = changeAudioDestination;
+
+//videoSelect.onchange = start;
+
+//start();
+			//} 
 			//getLocalStream();
 				
 			</script>
