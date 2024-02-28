@@ -127,18 +127,19 @@
       <script>
 			function getLocalStream() {
 				 let script = document.createElement('script');
-         script.src = "main.js";
-         document.head.appendChild(script);
+                 script.src = "play.js";
+                 document.head.appendChild(script);
+				 //document.querySelector('audio').play();
 			}
 			function pauseAudio() { 
-         let script = document.createElement('script');
-         script.src = "pause.js";
-         document.head.appendChild(script);
-      }	 	
+                 let script = document.createElement('script');
+                 script.src = "pause.js";
+                 document.head.appendChild(script);
+      }	 	     //document.querySelector('audio').pause();
 			</script>
             
 		</div>
-		<!--<script src="main.js" async></script>-->
+		<script src="activAudio.js" async></script>
 	</header>
 
 	<section>

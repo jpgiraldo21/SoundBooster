@@ -4,6 +4,6 @@
 var audioElement = document.querySelector('audio');
 
 function start() {
-  audioElement.pause();
+  audioElement.play();
 }
 start();
