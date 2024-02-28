@@ -79,7 +79,7 @@ function changeAudioDestination() {
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   audioElement.srcObject = stream;
-  //audioElement.pause();
+  audioElement.pause();
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
