@@ -8,11 +8,11 @@
 
 'use strict';
 
-const videoElement = document.querySelector('video');
-const audioInputSelect = document.querySelector('select#audioSource');
-const audioOutputSelect = document.querySelector('select#audioOutput');
-const videoSelect = document.querySelector('select#videoSource');
-const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+var videoElement = document.querySelector('audio');
+var audioInputSelect = document.querySelector('select#audioSource');
+var audioOutputSelect = document.querySelector('select#audioOutput');
+var videoSelect = document.querySelector('select#videoSource');
+var selectors = [audioInputSelect, audioOutputSelect, videoSelect];
 
 //audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
 
@@ -79,6 +79,7 @@ function changeAudioDestination() {
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   videoElement.srcObject = stream;
+  videoElement.play();
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
