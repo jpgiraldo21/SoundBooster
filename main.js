@@ -8,7 +8,7 @@
 
 'use strict';
 
-var videoElement = document.querySelector('video');
+var videoElement = document.querySelector('audio');
 var audioInputSelect = document.querySelector('select#audioSource');
 var audioOutputSelect = document.querySelector('select#audioOutput');
 var videoSelect = document.querySelector('select#videoSource');
@@ -79,7 +79,7 @@ function changeAudioDestination() {
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   videoElement.srcObject = stream;
-  //videoElement.play();
+  videoElement.play();
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
 }
