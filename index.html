@@ -106,11 +106,11 @@
             </audio>
 
 			<div class="button">
-				<label for="audioSource">Entrada de Audio: </label><select id="audioSource"></select>
+				<label for="audioSource">Entrada de Audio : </label><select id="audioSource"></select>
 			</div>
 		
 			<div class="button">
-				<label for="audioOutput">Salida de Audio: </label><select id="audioOutput"></select>
+				<label for="audioOutput">Salida de Audio : </label><select id="audioOutput"></select>
 			</div>
 		
 			<div class="button" style="display: none">
@@ -125,17 +125,36 @@
 			</div> 
 
       <script>
-			function getLocalStream() {
+		    var wakeObj = null;
+		    async function desBloqPantalla(){
+				try {
+					wakeObj = await navigator.wakeLock.request('screen');
+					console.log(wakeObj);
+				}catch (error) {
+					console.error('Error' + error);
+				}
+			}
+			async function bloqPantalla(){
+				try {
+					await wakeObj.release();
+					console.log(wakeObj);
+					wakeObj = null;
+				}catch (error) {
+					console.error('Error' + error);
+				} 
+			}
+			function getLocalStream() { 
 				 let script = document.createElement('script');
                  script.src = "play.js";
                  document.head.appendChild(script);
-				 //document.querySelector('audio').play();
+				 desBloqPantalla();
 			}
-			function pauseAudio() { 
-                 let script = document.createElement('script');
-                 script.src = "pause.js";
-                 document.head.appendChild(script);
-      }	 	     //document.querySelector('audio').pause();
+			function pauseAudio() {
+                let script = document.createElement('script');
+                script.src = "pause.js";
+                document.head.appendChild(script);
+				bloqPantalla();
+            }	 	    
 			</script>
             
 		</div>
