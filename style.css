@@ -6,6 +6,22 @@ html, body {
 	line-height: 1.5;
 	margin: 0;
 	padding: 0;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 	
 }
 
@@ -22,10 +38,30 @@ html, body {
 	
 }
 
+.button-1 {
+	color: #fff;
+	padding: 15px 25px;
+	background-color: #00000000;/*#393b3b;*/
+	background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+	box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+	border-radius: 14px;
+	font-weight: bold;
+	font-size: 16px;
+  
+	border: 0;
+  
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+  
+	cursor: pointer;
+  }
+  
+
 .container {
 	margin: 0 auto;
 	max-width: 768px;
-	padding: 20px 5%;
+	padding: 80px 5%;
 }
 
 section {
@@ -87,12 +123,12 @@ a:hover, a:active {
 }
 
 a code {
-	color: black;
+	color: rgb(21, 86, 64);
 }
 
 code {
 	background-color: aquamarine;
-	color: black;
+	color: rgb(21, 86, 64);
 	font-family: monospace;
 	padding: 1px;
 	user-select: all;
@@ -100,4 +136,70 @@ code {
 
 code.image {
 	background-color: lightyellow;
+}
+
+/*----- Style of Popup ----*/
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.popup h1 {
+  font-family:High Tower Text;
+  text-align: right;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0px 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  margin-left: 8%;
+  margin-right: 8%;
+  /*width:50%;*/
+  
+}
+.popup .popuptext ol{
+	text-align: left;
+}
+
+/* Popup arrow */
+/*.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  margin-left: 80px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #555;
+}*/
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }

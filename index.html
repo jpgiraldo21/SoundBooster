@@ -4,8 +4,8 @@
  <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Sound Booster</title>
-	<link rel="canonical" href="https://jpgiraldo21.github.io/SoundBooster/" />
+	<title>Dalfon - Sound Booster</title>
+	<link rel="canonical" href="https://dalfon.co" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- Icons and Colors -->
@@ -15,30 +15,30 @@
 	<link rel="manifest" href="./manifest.json">
 	<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
 	<link rel="shortcut icon" href="./favicon.ico">
-	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="msapplication-TileColor" content="#155640">
 	<meta name="msapplication-TileImage" content="./mstile-144x144.png">
 	<meta name="msapplication-config" content="./browserconfig.xml">
-	<meta name="theme-color" content="#000000">
+	<meta name="theme-color" content="#155640">
 	
 	<!-- SEO and Social Sharing and SEO -->
-	<meta name="description" content="Amplificador de Sonido Ambiente Sound Booster" />
+	<meta name="description" content="Dalfon Amplificador de Sonido Ambiente" />
 	<meta name="robots" content="noodp" />
 	<meta name="author" content="JPGiraldo">
-	<meta name="keywords" content="sound booster web app, sound booster web application, sound booster web app, sound booster web application, sound booster app, basic sound booster web app, basic sound booster web application, basic sound booster, sound booster, soundbooster, free sound booster web application, sound booster web app free, sound booster web app free download" />
+	<meta name="keywords" content="dalfon, dalfon web app, dalfon web application, sound booster web app, sound booster web application, dalfon sound booster web app, dalfon sound booster web application, dalfon sound booster app, basic sound booster web app, basic sound booster web application, basic sound booster, sound booster, soundbooster, free sound booster web application, sound booster web app free, sound booster web app free download" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Sound Booster Web App" />
-	<meta property="og:description" content="Amplificador de Sonido Ambiente Sound Booster" />
-	<meta property="og:url" content="https://jpgiraldo21.github.io/SoundBooster/" />
-	<meta property="og:site_name" content="Sound Booster Web App" />
-	<meta property="section:publisher" content="https://www.facebook.com/simplepwa/" />
-	<meta property="og:image" content="https://jpgiraldo21.github.io/SoundBooster/share.jpg" />
+	<meta property="og:title" content="Dalfon Sound Booster Web App" />
+	<meta property="og:description" content="Dalfon Amplificador de Sonido Ambiente" />
+	<meta property="og:url" content="https://dalfon.co" />
+	<meta property="og:site_name" content="Dalfon Web App" />
+	<!--<meta property="section:publisher" content="https://www.facebook.com/dalfon/" />-->
+	<meta property="og:image" content="https://dalfon.co/share.jpg" />
 	<!--<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Sound Booster Web App" />
-	<meta name="twitter:description" content="Amplificador de Sonido Ambiente Sound Booster" />
-	<meta name="twitter:site" content="@simplepwa" />
-	<meta name="twitter:image" content="https://jpgiraldo21.github.io/SoundBooster/share.jpg" />
-	<meta name="twitter:creator" content="@nicolemfurlan" />-->
+	<meta name="twitter:title" content="Dalfon Web App" />
+	<meta name="twitter:description" content="Dalfon, Amplificador de Sonido Ambiente" />
+	<meta name="twitter:site" content="@dalfon" />
+	<meta name="twitter:image" content="https://dalfon.co/share.jpg" />
+	<meta name="twitter:creator" content="@dalfon" />-->
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="style.css">
@@ -60,7 +60,7 @@
             const deferredPrompt = e;
 
             const installButton = document.createElement('button');
-            installButton.textContent = 'Install Sound Booster';
+            installButton.textContent = 'Install Dalfon';
             installButton.style.position = 'fixed';
             installButton.style.top = '1%';
             installButton.style.left = '1%';
@@ -92,12 +92,31 @@
         });
     }
 	</script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9577459283307046"
+    crossorigin="anonymous"></script>
+
  </head>
 
  <body>
 
 	<header>
 		<div class="container">
+			<div class="popup" onclick="popupFunction()"><h1>dalfon?</h1>
+				<span class="popuptext" id="myPopup">
+					<h2>Aumente su capacidad auditiva con Dalfon</h2>
+			        <p>Dalfon Sound Booster es una PWA (Progressive Web App) capaz de amplificar los sonidos de 
+			           su entorno por medio del micrófono de su celular o dispositivo bluetooth. 
+			        </p>			
+			        <h2 class="help">Cómo funciona Dalfon?</h2>
+			        <ol>
+				      <li>Solo instale la aplicación en su celular</li>
+				      <li>Conecte los audífonos a su celular, en lo posible sin micrófono</li>
+				      <li>Pulse el botón "Play Audio" y regule el volumen</li>
+			         </ol>
+				</span>
+			</div>
+
 			<a class="logo" aria-label="Logo">
 				<img src="logo.png" alt="Logo">
 			</a>
@@ -120,11 +139,18 @@
 			<!--<video id="video" style="display: none" playsinline autoplay></video>-->
 
 			<div class="button">
-			<button onclick="getLocalStream()" type="button">&#9654; Play Audio</button>
-			<button onclick="pauseAudio()" type="button">&#10074;&#10074; Pause Audio</button> 
+			<button class="button-1" onclick="getLocalStream()" type="button">&#9654; Play Audio</button>
+			<button class="button-1" onclick="pauseAudio()" type="button">&#10074;&#10074; Pause Audio</button> 
 			</div> 
 
-      <script>
+		<script>
+		// When the user clicks on div, open the popup
+		    function popupFunction() {
+			  var popup = document.getElementById("myPopup");
+			  popup.classList.toggle("show");
+			}
+		</script>	
+        <script>
 		    var wakeObj = null;
 		    async function desBloqPantalla(){
 				try {
@@ -160,17 +186,17 @@
 		</div>
 		<script src="activAudio.js" async></script>
 	</header>
-
+    <!--
 	<section>
 		
 		<div class="container">
-			<h1>Aumente su capacidad auditiva con Sound Booster</h1>
-			<h2 id="what">Que es Sound Booster?</h2>
-			<p>Sound Booster es una PWA (Progressive Web App) capaz de amplificar los sonidos de 
-			   su entorno por medio del microfono de su celular o dispositivo bluetooth. 
+			<h1>Aumente su capacidad auditiva con Dalfon</h1>
+			<h2 id="what">Que es Dalfon?</h2>
+			<p>Dalfon Sound Booster es una PWA (Progressive Web App) capaz de amplificar los sonidos de 
+			   su entorno por medio del micrófono de su celular o dispositivo bluetooth. 
 			</p>			
 			
-			<h2 class="help">Cómo funciona Sound Booster?</h2>
+			<h2 class="help">Cómo funciona Dalfon?</h2>
 			
 		    <ol>
 				<li>Solo instale la aplicación en su celular</li>
@@ -181,10 +207,10 @@
 	</section>
 
 	<footer>
-		<!--<div class="container">
+		<div class="container">
 			<p><span class="icon heart" role="img" aria-label="Heart" style="font-size:36px;">&#11123;</span></p>
-		</div>-->
-	</footer>
+		</div>
+	</footer>-->
 </body>
 
- </html>
+</html>
